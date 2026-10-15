@@ -1,0 +1,169 @@
+{
+  "destinations": [
+    {
+      "name": "Goa",
+      "country": "India",
+      "description": "Goa is India's smallest state and a premier beach destination, known for its stunning coastline, vibrant nightlife, Portuguese colonial architecture, and spice plantations. The golden sands of Baga, Calangute, and Palolem attract millions of tourists. Beyond beaches, Goa offers historic forts, centuries-old churches, and a unique blend of Indian and Portuguese culture.",
+      "best_season": "November to February",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Baga_beach_in_Goa.jpg/1280px-Baga_beach_in_Goa.jpg",
+      "avg_daily_cost": 2500.00
+    },
+    {
+      "name": "Jaipur",
+      "country": "India",
+      "description": "Jaipur, the Pink City, is the capital of Rajasthan and a jewel of India's Golden Triangle. Famous for its stunning palaces, ancient forts, and vibrant bazaars, it offers a rich tapestry of Rajput heritage. The Amber Fort, City Palace, Hawa Mahal, and Jantar Mantar are UNESCO-recognised landmarks. The city is also known for its colourful textiles, gemstones, and traditional cuisine.",
+      "best_season": "October to March",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Hawa_Mahal_Jaipur.jpg/1280px-Hawa_Mahal_Jaipur.jpg",
+      "avg_daily_cost": 2000.00
+    },
+    {
+      "name": "Manali",
+      "country": "India",
+      "description": "Manali is a high-altitude resort town in Himachal Pradesh, nestled in the Kullu Valley at the northern end of the valley. A popular destination for adventure sports including skiing, trekking, paragliding, and river rafting, it is surrounded by snow-capped peaks, ancient cedar forests, and the Beas River. The Solang Valley and Rohtang Pass are iconic attractions.",
+      "best_season": "October to June (avoid monsoon July-September)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Manali_Himachal_Pradesh.jpg/1280px-Manali_Himachal_Pradesh.jpg",
+      "avg_daily_cost": 2200.00
+    },
+    {
+      "name": "Kerala",
+      "country": "India",
+      "description": "Kerala, God's Own Country, is celebrated for its serene backwaters, lush hill stations, pristine beaches, and rich cultural heritage. The tranquil backwaters of Alleppey, the spice gardens of Munnar, the wildlife of Periyar, and the beaches of Kovalam offer diverse experiences. Kerala cuisine, Kathakali dance, and Ayurvedic treatments are world-renowned.",
+      "best_season": "September to March",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Kerala_backwaters.jpg/1280px-Kerala_backwaters.jpg",
+      "avg_daily_cost": 2800.00
+    },
+    {
+      "name": "Udaipur",
+      "country": "India",
+      "description": "Udaipur, the City of Lakes, is one of Rajasthan's most romantic destinations. Dominated by shimmering lakes, the city is dotted with magnificent palaces, temples, and gardens. The Lake Palace rising from the waters of Lake Pichola, the City Palace complex, and the Sajjangarh Monsoon Palace are architectural marvels. The city is also a major hub for traditional arts and crafts.",
+      "best_season": "September to March",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Lake_Pichola_in_Udaipur.jpg/1280px-Lake_Pichola_in_Udaipur.jpg",
+      "avg_daily_cost": 2300.00
+    },
+    {
+      "name": "Varanasi",
+      "country": "India",
+      "description": "Varanasi, one of the world's oldest continuously inhabited cities, is the spiritual capital of India. Situated on the banks of the sacred Ganges River, it is a centre of Hindu, Buddhist, and Jain traditions. The famous Ganga Aarti at the ghats, the labyrinthine lanes of the old city, the Kashi Vishwanath Temple, and Sarnath attract millions of pilgrims and travellers.",
+      "best_season": "October to March",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Varanasi_Dashashwamedh_Ghat.jpg/1280px-Varanasi_Dashashwamedh_Ghat.jpg",
+      "avg_daily_cost": 1500.00
+    },
+    {
+      "name": "Ladakh",
+      "country": "India",
+      "description": "Ladakh, the Land of High Passes, is a remote region in the northernmost part of India, bordering Tibet and Pakistan. Known for its dramatic, arid landscapes, turquoise lakes, Buddhist monasteries, and adventure opportunities, it is one of India's most unique destinations. Pangong Lake, Nubra Valley, and the Hemis Monastery are iconic attractions.",
+      "best_season": "June to September",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Pangong_Lake.jpg/1280px-Pangong_Lake.jpg",
+      "avg_daily_cost": 3500.00
+    },
+    {
+      "name": "Andaman",
+      "country": "India",
+      "description": "The Andaman and Nicobar Islands form an archipelago in the Bay of Bengal, renowned for its pristine white-sand beaches, crystal-clear turquoise waters, and vibrant coral reefs. Radhanagar Beach on Havelock Island is consistently ranked among Asia's best. The islands offer world-class scuba diving, snorkelling, sea-walking, and a fascinating colonial history at the Cellular Jail.",
+      "best_season": "October to May",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Radhanagar_Beach.jpg/1280px-Radhanagar_Beach.jpg",
+      "avg_daily_cost": 3200.00
+    },
+    {
+      "name": "Dubai",
+      "country": "UAE",
+      "description": "Dubai is a city of superlatives — the world's tallest building (Burj Khalifa), the largest mall, man-made islands, and a skyline that defies imagination. A global hub for luxury travel, shopping, and business, Dubai blends futuristic architecture with traditional Arabian heritage. The Gold Souk, Dubai Creek, Desert Safari, and world-class dining make it a complete destination.",
+      "best_season": "November to April",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Dubai_Marina_Skyline.jpg/1280px-Dubai_Marina_Skyline.jpg",
+      "avg_daily_cost": 8000.00
+    },
+    {
+      "name": "Bangkok",
+      "country": "Thailand",
+      "description": "Bangkok, Thailand's vibrant capital, is a city of contrasts where ornate temples sit alongside futuristic skyscrapers and bustling street markets. The Grand Palace and Wat Pho, the floating markets, the lively Chatuchak Weekend Market, and the pulsating Khao San Road nightlife make Bangkok one of Southeast Asia's most visited cities. The street food scene is legendary.",
+      "best_season": "November to April",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Bangkok_night.jpg/1280px-Bangkok_night.jpg",
+      "avg_daily_cost": 4500.00
+    }
+  ],
+
+  "hotels": [
+    {"destination_name": "Goa", "name": "Taj Holiday Village Resort & Spa", "stars": 5, "rating": 4.6, "price_per_night": 12000, "amenities": ["Pool", "Spa", "Beach Access", "WiFi", "Restaurant", "Bar"], "address": "Sinquerim, Bardez, Goa 403515", "image_url": "https://images.trvl-media.com/lodging/1000000/10000/2600/2571/53476b36.jpg"},
+    {"destination_name": "Goa", "name": "W Goa", "stars": 5, "rating": 4.5, "price_per_night": 15000, "amenities": ["Pool", "Spa", "Beach Access", "WiFi", "Multiple Restaurants", "Fitness Center"], "address": "Vagator Beach, Goa 403509", "image_url": "https://cache.marriott.com/marriottassets/marriott/GOA/goawh-pool-0108-hor-clsc.jpg"},
+    {"destination_name": "Goa", "name": "Aloft North Goa", "stars": 4, "rating": 4.2, "price_per_night": 6500, "amenities": ["Pool", "WiFi", "Restaurant", "Bar", "Fitness Center"], "address": "Candolim Beach Road, Goa 403515", "image_url": ""},
+    {"destination_name": "Goa", "name": "Zostel Goa", "stars": 2, "rating": 4.0, "price_per_night": 800, "amenities": ["WiFi", "Common Kitchen", "Lounge", "Tour Desk"], "address": "Palolem Beach Road, Canacona, Goa 403702", "image_url": ""},
+    {"destination_name": "Goa", "name": "Lemon Tree Hotel Candolim", "stars": 3, "rating": 4.1, "price_per_night": 3500, "amenities": ["Pool", "WiFi", "Restaurant", "Bar"], "address": "Candolim, Bardez, Goa 403515", "image_url": ""},
+
+    {"destination_name": "Jaipur", "name": "Rambagh Palace", "stars": 5, "rating": 4.8, "price_per_night": 35000, "amenities": ["Pool", "Spa", "Multiple Restaurants", "Polo Ground", "WiFi", "Heritage Tours"], "address": "Bhawani Singh Road, Jaipur 302005", "image_url": ""},
+    {"destination_name": "Jaipur", "name": "ITC Rajputana", "stars": 5, "rating": 4.4, "price_per_night": 10000, "amenities": ["Pool", "Spa", "WiFi", "Restaurant", "Business Center"], "address": "Palace Road, Jaipur 302006", "image_url": ""},
+    {"destination_name": "Jaipur", "name": "Zostel Jaipur", "stars": 2, "rating": 4.1, "price_per_night": 700, "amenities": ["WiFi", "Common Kitchen", "Lounge", "City Tours"], "address": "Near Hawa Mahal, Jaipur 302002", "image_url": ""},
+    {"destination_name": "Jaipur", "name": "Hotel Pearl Palace", "stars": 3, "rating": 4.3, "price_per_night": 2200, "amenities": ["WiFi", "Restaurant", "Rooftop Cafe", "Tour Desk"], "address": "Hathroi Fort, Ajmer Road, Jaipur", "image_url": ""},
+    {"destination_name": "Jaipur", "name": "Jai Mahal Palace", "stars": 5, "rating": 4.5, "price_per_night": 18000, "amenities": ["Pool", "Spa", "Gardens", "Multiple Restaurants", "WiFi"], "address": "Jacob Road, Civil Lines, Jaipur 302006", "image_url": ""},
+
+    {"destination_name": "Manali", "name": "Span Resort & Spa", "stars": 5, "rating": 4.5, "price_per_night": 9000, "amenities": ["River View", "Spa", "Restaurant", "WiFi", "Bonfire Area"], "address": "Kullu-Manali Highway, Katrain, Manali", "image_url": ""},
+    {"destination_name": "Manali", "name": "The Himalayan", "stars": 5, "rating": 4.4, "price_per_night": 12000, "amenities": ["Mountain View", "Pool", "Spa", "Restaurant", "WiFi"], "address": "Log Huts Area, Manali 175131", "image_url": ""},
+    {"destination_name": "Manali", "name": "Zostel Manali", "stars": 2, "rating": 4.2, "price_per_night": 650, "amenities": ["WiFi", "Mountain View", "Common Room", "Trek Booking"], "address": "Old Manali Road, Manali 175131", "image_url": ""},
+    {"destination_name": "Manali", "name": "Snow Valley Resorts", "stars": 3, "rating": 4.0, "price_per_night": 3200, "amenities": ["Mountain View", "Restaurant", "WiFi", "Campfire"], "address": "Solang Valley Road, Manali", "image_url": ""},
+    {"destination_name": "Manali", "name": "Johnson's Hotel", "stars": 3, "rating": 4.1, "price_per_night": 2800, "amenities": ["Garden", "Restaurant", "WiFi", "Parking"], "address": "Circuit House Road, Manali 175131", "image_url": ""},
+
+    {"destination_name": "Kerala", "name": "Kumarakom Lake Resort", "stars": 5, "rating": 4.7, "price_per_night": 20000, "amenities": ["Lake View", "Pool", "Spa", "Ayurveda", "Restaurant", "WiFi", "Houseboat"], "address": "Kumarakom, Kottayam, Kerala 686563", "image_url": ""},
+    {"destination_name": "Kerala", "name": "Taj Bekal Resort & Spa", "stars": 5, "rating": 4.6, "price_per_night": 18000, "amenities": ["Pool", "Spa", "Beach", "Multiple Restaurants", "WiFi"], "address": "Bekal, Kasaragod, Kerala 671318", "image_url": ""},
+    {"destination_name": "Kerala", "name": "Zostel Alleppey", "stars": 2, "rating": 4.0, "price_per_night": 750, "amenities": ["WiFi", "Backwater View", "Kayaking", "Common Kitchen"], "address": "Beach Road, Alleppey, Kerala 688012", "image_url": ""},
+    {"destination_name": "Kerala", "name": "Fragrant Nature Munnar", "stars": 4, "rating": 4.3, "price_per_night": 5500, "amenities": ["Tea Garden View", "Restaurant", "WiFi", "Spa"], "address": "Pallivasal, Munnar, Kerala 685612", "image_url": ""},
+    {"destination_name": "Kerala", "name": "Greenwoods Resort Thekkady", "stars": 3, "rating": 4.1, "price_per_night": 3000, "amenities": ["Forest View", "Restaurant", "WiFi", "Wildlife Safari"], "address": "Kumily, Thekkady, Kerala 685509", "image_url": ""},
+
+    {"destination_name": "Udaipur", "name": "Taj Lake Palace", "stars": 5, "rating": 4.9, "price_per_night": 40000, "amenities": ["Lake Views", "Pool", "Spa", "Multiple Restaurants", "WiFi", "Boat Transfers"], "address": "Lake Pichola, Udaipur 313001", "image_url": ""},
+    {"destination_name": "Udaipur", "name": "Oberoi Udaivilas", "stars": 5, "rating": 4.8, "price_per_night": 55000, "amenities": ["Pool", "Spa", "Lake View", "Multiple Restaurants", "WiFi", "Cultural Performances"], "address": "Haridasji Ki Magri, Mulla Talai, Udaipur 313001", "image_url": ""},
+    {"destination_name": "Udaipur", "name": "Zostel Udaipur", "stars": 2, "rating": 4.1, "price_per_night": 700, "amenities": ["WiFi", "Rooftop Cafe", "Lake View", "Common Kitchen"], "address": "Gangaur Ghat, Udaipur 313001", "image_url": ""},
+    {"destination_name": "Udaipur", "name": "Hotel Udai Kothi", "stars": 4, "rating": 4.3, "price_per_night": 5000, "amenities": ["Rooftop Pool", "Lake View", "Restaurant", "WiFi"], "address": "Hanuman Ghat, Udaipur 313001", "image_url": ""},
+    {"destination_name": "Udaipur", "name": "Amet Haveli", "stars": 3, "rating": 4.2, "price_per_night": 3500, "amenities": ["Lake View", "Restaurant", "WiFi", "Heritage Decor"], "address": "Outside Chandpole, Udaipur 313001", "image_url": ""},
+
+    {"destination_name": "Varanasi", "name": "BrijRama Palace", "stars": 5, "rating": 4.7, "price_per_night": 15000, "amenities": ["Ganga View", "Heritage Palace", "Restaurant", "WiFi", "Ghats Access"], "address": "Darbhanga Ghat, Varanasi 221001", "image_url": ""},
+    {"destination_name": "Varanasi", "name": "Radisson Hotel Varanasi", "stars": 4, "rating": 4.2, "price_per_night": 5500, "amenities": ["Pool", "WiFi", "Restaurant", "Fitness Center", "Business Center"], "address": "The Mall, Varanasi 221002", "image_url": ""},
+    {"destination_name": "Varanasi", "name": "Zostel Varanasi", "stars": 2, "rating": 4.0, "price_per_night": 600, "amenities": ["WiFi", "Ganga View", "Rooftop", "Boat Rides"], "address": "Assi Ghat, Varanasi 221005", "image_url": ""},
+    {"destination_name": "Varanasi", "name": "Hotel Surya", "stars": 3, "rating": 3.9, "price_per_night": 2500, "amenities": ["WiFi", "Restaurant", "Cultural Programs", "City Tours"], "address": "S-20/51, The Mall, Varanasi 221002", "image_url": ""},
+    {"destination_name": "Varanasi", "name": "Ganges View Guest House", "stars": 2, "rating": 4.1, "price_per_night": 1500, "amenities": ["Ganga View", "WiFi", "Rooftop"], "address": "Assi Ghat, Varanasi 221005", "image_url": ""},
+
+    {"destination_name": "Ladakh", "name": "The Grand Dragon Ladakh", "stars": 4, "rating": 4.5, "price_per_night": 8000, "amenities": ["Mountain View", "Restaurant", "WiFi", "Tour Desk", "Heating"], "address": "Old Airport Road, Leh, Ladakh 194101", "image_url": ""},
+    {"destination_name": "Ladakh", "name": "Stok Palace Heritage Hotel", "stars": 4, "rating": 4.4, "price_per_night": 7500, "amenities": ["Palace Stay", "Mountain View", "Restaurant", "WiFi", "Heritage Tours"], "address": "Stok Village, Leh, Ladakh 194101", "image_url": ""},
+    {"destination_name": "Ladakh", "name": "Zostel Leh", "stars": 2, "rating": 4.3, "price_per_night": 800, "amenities": ["WiFi", "Mountain View", "Common Room", "Trek Booking"], "address": "Fort Road, Leh, Ladakh 194101", "image_url": ""},
+    {"destination_name": "Ladakh", "name": "Ladakh Sarai Resort", "stars": 3, "rating": 4.2, "price_per_night": 5500, "amenities": ["Tented Stay", "Mountain View", "Restaurant", "WiFi", "Star Gazing"], "address": "Nimmo, Leh, Ladakh 194101", "image_url": ""},
+    {"destination_name": "Ladakh", "name": "Nubra Ethnic Camp", "stars": 3, "rating": 4.3, "price_per_night": 4000, "amenities": ["Tented Camp", "Desert View", "Restaurant", "Camel Safari"], "address": "Hunder, Nubra Valley, Ladakh 194401", "image_url": ""},
+
+    {"destination_name": "Andaman", "name": "Taj Exotica Resort & Spa, Andamans", "stars": 5, "rating": 4.7, "price_per_night": 25000, "amenities": ["Beach", "Pool", "Spa", "Multiple Restaurants", "WiFi", "Water Sports"], "address": "Radhanagar Beach, Havelock Island 744211", "image_url": ""},
+    {"destination_name": "Andaman", "name": "SeaShell Havelock", "stars": 4, "rating": 4.3, "price_per_night": 7000, "amenities": ["Beach Access", "Pool", "Restaurant", "WiFi", "Diving"], "address": "Beach No 5, Havelock Island 744211", "image_url": ""},
+    {"destination_name": "Andaman", "name": "Zostel Havelock", "stars": 2, "rating": 4.2, "price_per_night": 900, "amenities": ["Beach Access", "WiFi", "Common Area", "Snorkelling"], "address": "Havelock Island, Andaman 744211", "image_url": ""},
+    {"destination_name": "Andaman", "name": "Symphony Palms Beach Resort", "stars": 3, "rating": 4.0, "price_per_night": 4500, "amenities": ["Beach", "Restaurant", "WiFi", "Water Sports"], "address": "Neil Island, Andaman 744204", "image_url": ""},
+    {"destination_name": "Andaman", "name": "Barefoot at Havelock", "stars": 4, "rating": 4.4, "price_per_night": 10000, "amenities": ["Beach Cottages", "Pool", "Restaurant", "WiFi", "Diving Center"], "address": "Radhanagar, Havelock Island 744211", "image_url": ""},
+
+    {"destination_name": "Dubai", "name": "Burj Al Arab Jumeirah", "stars": 5, "rating": 4.9, "price_per_night": 90000, "amenities": ["Private Beach", "Helicopter Pad", "Multiple Restaurants", "Spa", "Pool", "Butler Service"], "address": "Jumeirah Beach Road, Dubai", "image_url": ""},
+    {"destination_name": "Dubai", "name": "Atlantis The Palm", "stars": 5, "rating": 4.5, "price_per_night": 25000, "amenities": ["Waterpark", "Beach", "Multiple Restaurants", "Spa", "Aquaventure", "WiFi"], "address": "Crescent Road, The Palm, Dubai", "image_url": ""},
+    {"destination_name": "Dubai", "name": "Premier Inn Dubai Al Jaddaf", "stars": 3, "rating": 4.1, "price_per_night": 5500, "amenities": ["Pool", "WiFi", "Restaurant", "Gym", "Metro Access"], "address": "Al Jaddaf, Dubai", "image_url": ""},
+    {"destination_name": "Dubai", "name": "Rove Downtown", "stars": 3, "rating": 4.3, "price_per_night": 4500, "amenities": ["Pool", "WiFi", "Cafe", "Burj Khalifa View"], "address": "Sheikh Mohammed Bin Rashid Blvd, Dubai", "image_url": ""},
+    {"destination_name": "Dubai", "name": "XVA Art Hotel", "stars": 4, "rating": 4.4, "price_per_night": 8000, "amenities": ["WiFi", "Art Gallery", "Rooftop Cafe", "Heritage District"], "address": "Al Fahidi, Bur Dubai, Dubai", "image_url": ""},
+
+    {"destination_name": "Bangkok", "name": "Mandarin Oriental Bangkok", "stars": 5, "rating": 4.8, "price_per_night": 30000, "amenities": ["River View", "Pool", "Spa", "Multiple Restaurants", "WiFi", "Boat Service"], "address": "48 Oriental Avenue, Bangrak, Bangkok 10500", "image_url": ""},
+    {"destination_name": "Bangkok", "name": "Riva Arun Bangkok", "stars": 4, "rating": 4.5, "price_per_night": 8000, "amenities": ["River View", "Rooftop Bar", "Restaurant", "WiFi", "Temple Views"], "address": "392/25-26 Maharaj Road, Phra Nakhon, Bangkok", "image_url": ""},
+    {"destination_name": "Bangkok", "name": "Lub d Bangkok Silom", "stars": 2, "rating": 4.2, "price_per_night": 1200, "amenities": ["WiFi", "Pool", "Common Areas", "Bar", "City Tours"], "address": "4 Decho Road, Suriyawong, Bangrak, Bangkok 10500", "image_url": ""},
+    {"destination_name": "Bangkok", "name": "ibis Bangkok Siam", "stars": 3, "rating": 4.0, "price_per_night": 3500, "amenities": ["WiFi", "Restaurant", "Fitness Center", "BTS Access"], "address": "927 Rama 1 Road, Pathumwan, Bangkok 10330", "image_url": ""},
+    {"destination_name": "Bangkok", "name": "Capella Bangkok", "stars": 5, "rating": 4.7, "price_per_night": 45000, "amenities": ["River View", "Pool", "Spa", "Fine Dining", "WiFi", "Private Boat"], "address": "300-304 Charoenkrung Road, Bangrak, Bangkok 10120", "image_url": ""}
+  ],
+
+  "flight_routes": [
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Delhi", "destination": "Goa", "depart_hour": 6, "depart_minute": 30, "duration_min": 150, "base_price": 4500, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "Air India", "flight_no_prefix": "AI", "origin": "Mumbai", "destination": "Goa", "depart_hour": 8, "depart_minute": 0, "duration_min": 60, "base_price": 3800, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "SpiceJet", "flight_no_prefix": "SG", "origin": "Bangalore", "destination": "Goa", "depart_hour": 10, "depart_minute": 15, "duration_min": 75, "base_price": 3200, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Delhi", "destination": "Jaipur", "depart_hour": 7, "depart_minute": 0, "duration_min": 75, "base_price": 2800, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "Air India", "flight_no_prefix": "AI", "origin": "Mumbai", "destination": "Jaipur", "depart_hour": 9, "depart_minute": 30, "duration_min": 110, "base_price": 3500, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Delhi", "destination": "Manali", "depart_hour": 6, "depart_minute": 0, "duration_min": 60, "base_price": 5200, "seat_class": "economy", "frequency_days": 2},
+    {"airline": "Air India", "flight_no_prefix": "AI", "origin": "Delhi", "destination": "Kochi", "depart_hour": 8, "depart_minute": 45, "duration_min": 210, "base_price": 6000, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Mumbai", "destination": "Kochi", "depart_hour": 7, "depart_minute": 30, "duration_min": 120, "base_price": 4200, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "Vistara", "flight_no_prefix": "UK", "origin": "Delhi", "destination": "Udaipur", "depart_hour": 9, "depart_minute": 0, "duration_min": 90, "base_price": 4000, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Mumbai", "destination": "Varanasi", "depart_hour": 6, "depart_minute": 15, "duration_min": 150, "base_price": 5500, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "Air India", "flight_no_prefix": "AI", "origin": "Delhi", "destination": "Varanasi", "depart_hour": 7, "depart_minute": 30, "duration_min": 90, "base_price": 3800, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Delhi", "destination": "Leh", "depart_hour": 5, "depart_minute": 30, "duration_min": 75, "base_price": 8000, "seat_class": "economy", "frequency_days": 2},
+    {"airline": "Air India", "flight_no_prefix": "AI", "origin": "Delhi", "destination": "Port Blair", "depart_hour": 7, "depart_minute": 0, "duration_min": 270, "base_price": 9000, "seat_class": "economy", "frequency_days": 2},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Chennai", "destination": "Port Blair", "depart_hour": 8, "depart_minute": 30, "duration_min": 120, "base_price": 6500, "seat_class": "economy", "frequency_days": 2},
+    {"airline": "Emirates", "flight_no_prefix": "EK", "origin": "Delhi", "destination": "Dubai", "depart_hour": 3, "depart_minute": 0, "duration_min": 225, "base_price": 18000, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "Air Arabia", "flight_no_prefix": "G9", "origin": "Mumbai", "destination": "Dubai", "depart_hour": 4, "depart_minute": 30, "duration_min": 210, "base_price": 14000, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "Thai Airways", "flight_no_prefix": "TG", "origin": "Delhi", "destination": "Bangkok", "depart_hour": 2, "depart_minute": 0, "duration_min": 270, "base_price": 16000, "seat_class": "economy", "frequency_days": 1},
+    {"airline": "IndiGo", "flight_no_prefix": "6E", "origin": "Bangalore", "destination": "Bangkok", "depart_hour": 3, "depart_minute": 30, "duration_min": 240, "base_price": 13000, "seat_class": "economy", "frequency_days": 2},
+    {"airline": "Emirates", "flight_no_prefix": "EK", "origin": "Delhi", "destination": "Dubai", "depart_hour": 14, "depart_minute": 0, "duration_min": 225, "base_price": 22000, "seat_class": "business", "frequency_days": 1},
+    {"airline": "Vistara", "flight_no_prefix": "UK", "origin": "Mumbai", "destination": "Delhi", "depart_hour": 6, "depart_minute": 0, "duration_min": 120, "base_price": 4500, "seat_class": "economy", "frequency_days": 1}
+  ]
+}

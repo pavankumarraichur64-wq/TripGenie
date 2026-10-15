@@ -1,0 +1,40 @@
+# Local environment files and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node.js and frontend build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local databases and logs
+*.db
+*.sqlite
+*.sqlite3
+*.log
+
+# IDE and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

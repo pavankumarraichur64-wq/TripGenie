@@ -1,0 +1,1 @@
+# TripGenie Core Package
