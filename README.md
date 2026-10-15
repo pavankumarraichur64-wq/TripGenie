@@ -27,7 +27,7 @@ TripGenie turns trip preferences into a day-by-day itinerary, lets travelers bro
 - Python 3.11 or 3.12 recommended
 - Node.js LTS and npm
 - A running MySQL server if you keep the MySQL URL in `.env.example`; SQLite needs no separate server
-- For AI-generated itineraries and chat: a Groq API key
+- For AI-generated itineraries and chat: a Groq API key (Get one here ->https://console.groq.com/keys)
 
 ## Quick start on Windows
 
