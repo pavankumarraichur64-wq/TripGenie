@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import {
   Calendar,
@@ -11,10 +11,113 @@ import {
   Plane,
   Tag,
   CheckCircle,
+  LocateFixed,
+  Image as ImageIcon,
 } from 'lucide-react'
 import toast from 'react-hot-toast'
+import * as L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import api from '../services/api'
 import { ChatDrawer } from '../components/ChatDrawer'
+
+type Coordinates = [number, number]
+
+const ItineraryMap: React.FC<{
+  items: any[]
+  userLocation: Coordinates | null
+  onLocate: () => void
+}> = ({ items, userLocation, onLocate }) => {
+  const mapElement = useRef<HTMLDivElement>(null)
+  const mapRef = useRef<L.Map | null>(null)
+  const stopsLayer = useRef<L.LayerGroup | null>(null)
+  const mapStops = useMemo(
+    () => items.filter((item) => Number.isFinite(item.latitude) && Number.isFinite(item.longitude)),
+    [items]
+  )
+
+  useEffect(() => {
+    if (!mapElement.current) return
+
+    const map = L.map(mapElement.current, { scrollWheelZoom: false })
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(map)
+    const layer = L.layerGroup().addTo(map)
+    mapRef.current = map
+    stopsLayer.current = layer
+
+    return () => {
+      map.remove()
+      mapRef.current = null
+      stopsLayer.current = null
+    }
+  }, [])
+
+  useEffect(() => {
+    const map = mapRef.current
+    const layer = stopsLayer.current
+    if (!map || !layer) return
+
+    layer.clearLayers()
+    const positions = mapStops.map((item) => L.latLng(item.latitude, item.longitude))
+    if (positions.length > 1) {
+      L.polyline(positions, { color: '#0d9488', weight: 4 }).addTo(layer)
+    }
+
+    mapStops.forEach((item, index) => {
+      const popup = document.createElement('div')
+      const title = document.createElement('strong')
+      title.textContent = item.place_name || item.title
+      popup.append(title, document.createElement('br'), 'Approximate demo location')
+      L.circleMarker(positions[index], {
+        radius: 8,
+        color: '#0f766e',
+        fillColor: '#14b8a6',
+        fillOpacity: 0.9,
+      }).bindPopup(popup).addTo(layer)
+    })
+
+    if (userLocation) {
+      const currentPosition = L.latLng(userLocation)
+      const popup = document.createElement('div')
+      popup.textContent = 'Your current GPS location'
+      L.circleMarker(currentPosition, {
+        radius: 9,
+        color: '#1d4ed8',
+        fillColor: '#60a5fa',
+        fillOpacity: 1,
+      }).bindPopup(popup).addTo(layer)
+      map.setView(currentPosition, 14)
+    } else if (positions.length > 1) {
+      map.fitBounds(L.latLngBounds(positions), { padding: [24, 24], maxZoom: 14 })
+    } else if (positions.length === 1) {
+      map.setView(positions[0], 14)
+    }
+  }, [mapStops, userLocation])
+
+  return (
+    <section className="space-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h3 className="font-bold text-slate-900 text-sm">Day route map</h3>
+          <p className="text-[11px] text-slate-500 mt-1">
+            Approximate demo pins and a straight-line route; not navigation directions.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={onLocate}
+          className="inline-flex items-center gap-2 rounded-lg border border-slate-200 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50"
+        >
+          <LocateFixed className="h-4 w-4 text-teal-700" />
+          Show my GPS location
+        </button>
+      </div>
+      <div ref={mapElement} className="h-72 overflow-hidden rounded-2xl border border-slate-200" />
+    </section>
+  )
+}
 
 export const Itinerary: React.FC = () => {
   const { id } = useParams<{ id: string }>()
@@ -24,6 +127,7 @@ export const Itinerary: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false)
   const [regenerating, setRegenerating] = useState<boolean>(false)
   const [exportingPdf, setExportingPdf] = useState<boolean>(false)
+  const [userLocation, setUserLocation] = useState<Coordinates | null>(null)
 
   const fetchTrip = async () => {
     try {
@@ -83,6 +187,27 @@ export const Itinerary: React.FC = () => {
     }
   }
 
+  const handleLocateMe = () => {
+    if (!navigator.geolocation) {
+      toast.error('GPS location is not available in this browser.')
+      return
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      ({ coords }) => {
+        setUserLocation([coords.latitude, coords.longitude])
+        toast.success('Your current location is shown on the map.')
+      },
+      (error) => {
+        const message = error.code === error.PERMISSION_DENIED
+          ? 'Allow location access in your browser to show your position.'
+          : 'Unable to determine your location. Please try again.'
+        toast.error(message)
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+    )
+  }
+
   if (loading) {
     return (
       <div className="max-w-5xl mx-auto px-4 py-20 text-center">
@@ -105,6 +230,10 @@ export const Itinerary: React.FC = () => {
 
   const currentDayData = trip.itinerary_days?.find(
     (d: any) => d.day_number === activeDay
+  )
+  const mapItems: any[] = currentDayData?.items || []
+  const hasMapStops = mapItems.some(
+    (item: any) => Number.isFinite(item.latitude) && Number.isFinite(item.longitude)
   )
 
   return (
@@ -186,6 +315,14 @@ export const Itinerary: React.FC = () => {
                 </button>
               </div>
 
+              {hasMapStops && (
+                <ItineraryMap
+                  items={mapItems}
+                  userLocation={userLocation}
+                  onLocate={handleLocateMe}
+                />
+              )}
+
               {/* Activities timeline */}
               <div className="space-y-4">
                 {currentDayData.items?.map((item: any, idx: number) => (
@@ -212,8 +349,27 @@ export const Itinerary: React.FC = () => {
                             {item.description}
                           </p>
                         )}
+                        {item.latitude != null && item.longitude != null && (
+                          <p className="text-[10px] text-slate-400 mt-1">
+                            Approx. GPS: {Number(item.latitude).toFixed(5)}, {Number(item.longitude).toFixed(5)}
+                          </p>
+                        )}
                       </div>
                     </div>
+                    {item.photo_url && (
+                      <div className="flex items-center gap-2 sm:w-36 sm:flex-col sm:items-start">
+                        <img
+                          src={item.photo_url}
+                          alt={`Illustrative destination photo for ${item.title}`}
+                          loading="lazy"
+                          className="h-16 w-20 rounded-lg object-cover sm:h-20 sm:w-full"
+                        />
+                        <span className="flex items-center gap-1 text-[10px] text-slate-400">
+                          <ImageIcon className="h-3 w-3 shrink-0" />
+                          {item.photo_credit || 'Destination photo'}
+                        </span>
+                      </div>
+                    )}
                     {item.estimated_cost > 0 && (
                       <div className="text-right flex-shrink-0">
                         <span className="text-xs text-slate-400">Est.</span>
@@ -262,6 +418,34 @@ export const Itinerary: React.FC = () => {
               </Link>
             </div>
           </div>
+
+          {currentDayData?.local_transport?.length > 0 && (
+            <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-3">
+              <div>
+                <h3 className="font-bold text-slate-900 text-sm">Local transport</h3>
+                <p className="text-[11px] text-slate-500 mt-1">
+                  Sample estimates only. Confirm fares and availability locally.
+                </p>
+              </div>
+              {currentDayData.local_transport.map((option: any) => (
+                <div
+                  key={option.mode}
+                  className="flex items-start justify-between gap-3 rounded-xl bg-slate-50 p-3"
+                >
+                  <div>
+                    <p className="text-xs font-bold text-slate-800">{option.mode}</p>
+                    <p className="text-[10px] text-slate-500 mt-1">{option.description}</p>
+                    <p className="text-[10px] text-slate-400 mt-1">
+                      Approx. {option.estimated_minutes} minutes
+                    </p>
+                  </div>
+                  <span className="shrink-0 text-xs font-bold text-teal-700">
+                    ₹{Number(option.estimated_fare).toLocaleString('en-IN')}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Budget Snapshot */}
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">

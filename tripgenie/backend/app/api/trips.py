@@ -19,6 +19,7 @@ from app.models.destination import Destination
 from app.models.itinerary import ItineraryDay, ItineraryItem
 from app.models.ai_cache import AICache
 from app.schemas.trip import TripGenerateRequest, TripResponse, DayRegenerateRequest, ItineraryDayResponse
+from app.services.place_enrichment import enrich_trip
 from app.ai.llm_service import llm_service
 from app.ai.prompts import ITINERARY_SYSTEM_PROMPT, REGENERATE_DAY_PROMPT
 
@@ -139,7 +140,7 @@ Additional preferences: {req.custom_prompt or 'None'}
 
     db.commit()
     db.refresh(new_trip)
-    return new_trip
+    return enrich_trip(new_trip, dest_record)
 
 
 @router.get("", response_model=List[TripResponse])
@@ -168,7 +169,8 @@ def get_trip(
     ).scalar_one_or_none()
     if not trip:
         raise HTTPException(status_code=404, detail="Trip not found")
-    return trip
+    destination = db.get(Destination, trip.destination_id) if trip.destination_id else None
+    return enrich_trip(trip, destination)
 
 
 @router.delete("/{trip_id}", status_code=status.HTTP_204_NO_CONTENT)

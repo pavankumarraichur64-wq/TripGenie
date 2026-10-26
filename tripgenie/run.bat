@@ -68,7 +68,7 @@ if not exist "%APP_ROOT%backend\.env" (
 
 :: 3. Setup Virtual Environment if not exists
 if not exist "%APP_ROOT%backend\venv\Scripts\python.exe" (
-    echo [INFO] Creating virtual environment (one-time setup)...
+    echo [INFO] Creating virtual environment for first-time setup...
     pushd "%APP_ROOT%backend"
     %PY_CMD% -m venv venv
     echo [INFO] Installing backend dependencies...
@@ -88,14 +88,14 @@ if not exist "%APP_ROOT%backend\tripgenie.db" (
 :: 5. Launch Backend
 echo [1/2] Starting FastAPI backend on http://127.0.0.1:8000...
 pushd "%APP_ROOT%backend"
-start "TripGenie Backend" cmd /k "venv\Scripts\activate && uvicorn main:app --reload --host 127.0.0.1 --port 8000"
+start "TripGenie Backend" cmd /k "venv\Scripts\python.exe -m uvicorn main:app --reload --host 127.0.0.1 --port 8000"
 popd
 
 :: 6. Launch Frontend
 echo [2/2] Starting Frontend...
 pushd "%APP_ROOT%frontend"
 if not exist "node_modules" (
-    echo [INFO] Installing frontend npm packages (one-time setup)...
+    echo [INFO] Installing frontend npm packages for first-time setup...
     call npm install
 )
 start "TripGenie Frontend" cmd /k "npm run dev"

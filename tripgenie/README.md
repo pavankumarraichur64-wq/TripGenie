@@ -41,6 +41,12 @@ The default local URLs are:
 - API: <http://127.0.0.1:8000>
 - Interactive API docs: <http://127.0.0.1:8000/docs>
 
+## Itinerary maps, transport, and photos
+
+Itinerary pages include an OpenStreetMap view, optional browser GPS position, sample local-transport estimates, and destination photos. Map pins and straight-line routes are illustrative demo data, not verified venue coordinates or turn-by-turn directions. GPS is requested only when you select **Show my GPS location**. Hotel and flight listings remain seeded demo offers.
+
+The itinerary PDF includes place/activity names, approximate coordinates, and a destination photo when one is available from the seeded destination data. These photos illustrate the destination and are not guaranteed to depict each listed venue.
+
 ## Manual setup
 
 Open two terminals from this folder.

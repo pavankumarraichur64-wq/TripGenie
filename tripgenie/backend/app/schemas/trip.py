@@ -16,9 +16,22 @@ class ItineraryItemBase(BaseModel):
 class ItineraryItemResponse(ItineraryItemBase):
     id: int
     day_id: int
+    place_name: Optional[str] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    photo_url: Optional[str] = None
+    photo_credit: Optional[str] = None
 
     class Config:
         from_attributes = True
+
+
+class LocalTransportOption(BaseModel):
+    mode: str
+    description: str
+    estimated_fare: float
+    estimated_minutes: int
+    is_mock: bool = True
 
 
 class ItineraryDayBase(BaseModel):
@@ -31,6 +44,7 @@ class ItineraryDayResponse(ItineraryDayBase):
     id: int
     trip_id: int
     items: List[ItineraryItemResponse] = []
+    local_transport: List[LocalTransportOption] = []
 
     class Config:
         from_attributes = True
