@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Plane, Calendar, ArrowRight, ShieldCheck } from 'lucide-react'
 import toast from 'react-hot-toast'
 import api from '../services/api'
+import type { Flight } from '../types'
 
 export const Flights: React.FC = () => {
   const [searchParams] = useSearchParams()
@@ -10,8 +11,9 @@ export const Flights: React.FC = () => {
 
   const [origin, setOrigin] = useState('Delhi')
   const [destination, setDestination] = useState(searchParams.get('destination') || 'Goa')
+  const [departDate, setDepartDate] = useState(searchParams.get('depart_date') || '')
   const [flightClass, setFlightClass] = useState('economy')
-  const [flights, setFlights] = useState<any[]>([])
+  const [flights, setFlights] = useState<Flight[]>([])
   const [loading, setLoading] = useState(false)
 
   const fetchFlights = async () => {
@@ -21,6 +23,7 @@ export const Flights: React.FC = () => {
         params: {
           origin: origin || undefined,
           destination: destination || undefined,
+          depart_date: departDate || undefined,
           flight_class: flightClass,
         },
       })
@@ -36,7 +39,7 @@ export const Flights: React.FC = () => {
     fetchFlights()
   }, [flightClass])
 
-  const handleBook = (flight: any) => {
+  const handleBook = (flight: Flight) => {
     navigate('/checkout', {
       state: {
         type: 'flight',
@@ -55,11 +58,11 @@ export const Flights: React.FC = () => {
           Find & Compare Flights
         </h1>
         <p className="text-slate-500 text-sm mt-1">
-          Search competitive routes across major carriers with live availability simulation.
+          Compare sample fares and schedules from our demo dataset. Prices and seat counts are not live.
         </p>
 
         {/* Search Bar */}
-        <div className="mt-6 p-4 bg-white rounded-2xl shadow-sm border border-slate-200 grid grid-cols-1 sm:grid-cols-4 gap-3 items-center">
+        <div className="mt-6 p-4 bg-white rounded-2xl shadow-sm border border-slate-200 grid grid-cols-1 sm:grid-cols-5 gap-3 items-center">
           <div>
             <label className="block text-[10px] font-bold text-slate-400 uppercase">From</label>
             <input
@@ -67,6 +70,17 @@ export const Flights: React.FC = () => {
               value={origin}
               onChange={(e) => setOrigin(e.target.value)}
               placeholder="Origin city"
+              className="w-full py-1.5 border-b border-slate-200 focus:outline-none focus:border-teal-500 text-sm font-semibold text-slate-800"
+            />
+          </div>
+
+          <div>
+            <label className="block text-[10px] font-bold text-slate-400 uppercase">Departure date</label>
+            <input
+              type="date"
+              value={departDate}
+              min={new Date().toISOString().slice(0, 10)}
+              onChange={(e) => setDepartDate(e.target.value)}
               className="w-full py-1.5 border-b border-slate-200 focus:outline-none focus:border-teal-500 text-sm font-semibold text-slate-800"
             />
           </div>

@@ -31,6 +31,7 @@ class LocalTransportOption(BaseModel):
     description: str
     estimated_fare: float
     estimated_minutes: int
+    currency: str = "INR"
     is_mock: bool = True
 
 
@@ -65,6 +66,10 @@ class TripResponse(BaseModel):
     id: int
     user_id: int
     destination_id: Optional[int] = None
+    destination_name: str
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    map_location_source: Optional[str] = None
     title: str
     start_date: Optional[date] = None
     days: int

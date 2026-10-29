@@ -1,6 +1,5 @@
-"""Mock map and transport details attached to itinerary API responses."""
+"""Map and transport details attached to itinerary API responses."""
 from typing import Optional
-from urllib.parse import urlparse
 
 from app.models.destination import Destination
 from app.models.trip import Trip
@@ -20,62 +19,108 @@ DESTINATION_CENTERS: dict[str, tuple[float, float]] = {
     "bangkok": (13.7563, 100.5018),
 }
 
-MOCK_TRANSPORT_OPTIONS = [
+INDIA_TRANSPORT_OPTIONS = [
     LocalTransportOption(
         mode="Auto-rickshaw",
-        description="Short city trips; confirm the fare before departure.",
+        description="Sample fare for a short city trip; agree on the fare before departure.",
         estimated_fare=180,
         estimated_minutes=20,
         is_mock=True,
     ),
     LocalTransportOption(
-        mode="Taxi",
-        description="Convenient point-to-point travel; sample fare only.",
+        mode="App-based taxi",
+        description="Illustrative short-trip estimate; actual fares vary by time and demand.",
         estimated_fare=450,
         estimated_minutes=25,
         is_mock=True,
     ),
     LocalTransportOption(
-        mode="Public transport",
-        description="Budget-friendly local bus or metro where available.",
+        mode="Local bus",
+        description="Indicative local bus fare and travel time; check the current route.",
         estimated_fare=60,
         estimated_minutes=40,
         is_mock=True,
     ),
 ]
 
+DESTINATION_TRANSPORT_OPTIONS: dict[str, list[LocalTransportOption]] = {
+    "dubai": [
+        LocalTransportOption(
+            mode="Metro",
+            description="Illustrative short urban trip; check zones and current fares.",
+            estimated_fare=5,
+            estimated_minutes=25,
+            currency="AED",
+        ),
+        LocalTransportOption(
+            mode="Taxi",
+            description="Sample city fare only; actual meter fares may vary.",
+            estimated_fare=25,
+            estimated_minutes=20,
+            currency="AED",
+        ),
+        LocalTransportOption(
+            mode="Public bus",
+            description="Indicative fare; confirm the route and Nol card requirements.",
+            estimated_fare=3,
+            estimated_minutes=40,
+            currency="AED",
+        ),
+    ],
+    "bangkok": [
+        LocalTransportOption(
+            mode="BTS / MRT",
+            description="Illustrative short urban trip; check the current route fare.",
+            estimated_fare=40,
+            estimated_minutes=20,
+            currency="THB",
+        ),
+        LocalTransportOption(
+            mode="Taxi",
+            description="Sample short-trip estimate; traffic and meter fare vary.",
+            estimated_fare=120,
+            estimated_minutes=30,
+            currency="THB",
+        ),
+        LocalTransportOption(
+            mode="Tuk-tuk",
+            description="Indicative short-trip fare; agree on the price before departure.",
+            estimated_fare=150,
+            estimated_minutes=20,
+            currency="THB",
+        ),
+    ],
+}
+
+
+def _transport_options_for(destination: Optional[Destination]) -> list[LocalTransportOption]:
+    if destination is None:
+        return [option.model_copy() for option in INDIA_TRANSPORT_OPTIONS]
+
+    options = DESTINATION_TRANSPORT_OPTIONS.get(
+        destination.name.casefold(),
+        INDIA_TRANSPORT_OPTIONS,
+    )
+    return [option.model_copy() for option in options]
+
 
 def enrich_trip(trip: Trip, destination: Optional[Destination]) -> TripResponse:
-    """Add explicitly approximate demo locations and local transport choices."""
+    """Add destination map fallback and local transport estimates."""
     response = TripResponse.model_validate(trip)
+    response.destination_name = (
+        trip.destination_name
+        or (destination.name if destination is not None else trip.title)
+    )
     center = (
-        DESTINATION_CENTERS.get(destination.name.casefold())
-        if destination is not None
-        else None
+        DESTINATION_CENTERS.get(response.destination_name.casefold())
     )
-    photo_url = destination.image_url if destination is not None else None
-    photo_host = urlparse(photo_url).hostname if photo_url else None
-    photo_credit = (
-        "Illustrative destination photo from Wikimedia Commons; not venue-specific."
-        if photo_host == "upload.wikimedia.org"
-        else "Illustrative destination photo; not venue-specific."
-        if photo_url
-        else None
-    )
-    stop_number = 0
+    if center is not None:
+        response.latitude, response.longitude = center
+        response.map_location_source = "Approximate destination center"
 
     for day in response.itinerary_days:
-        day.local_transport = [option.model_copy() for option in MOCK_TRANSPORT_OPTIONS]
+        day.local_transport = _transport_options_for(destination)
         for item in day.items:
-            item.photo_url = photo_url
-            item.photo_credit = photo_credit
-            if center is None:
-                continue
-
-            row, column = divmod(stop_number, 3)
-            item.latitude = center[0] + (row - 1) * 0.006
-            item.longitude = center[1] + (column - 1) * 0.006
             item.place_name = item.title
-            stop_number += 1
 
     return response

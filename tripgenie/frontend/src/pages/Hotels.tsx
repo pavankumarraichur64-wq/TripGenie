@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom'
 import { Hotel as HotelIcon, Star, MapPin, Search, Check } from 'lucide-react'
 import toast from 'react-hot-toast'
 import api from '../services/api'
+import type { Hotel as HotelListing } from '../types'
 
 export const Hotels: React.FC = () => {
   const [searchParams] = useSearchParams()
@@ -12,7 +13,7 @@ export const Hotels: React.FC = () => {
   const [destination, setDestination] = useState(initialDest)
   const [stars, setStars] = useState<string>('')
   const [sort, setSort] = useState<string>('price_asc')
-  const [hotels, setHotels] = useState<any[]>([])
+  const [hotels, setHotels] = useState<HotelListing[]>([])
   const [loading, setLoading] = useState(false)
 
   const fetchHotels = async () => {
@@ -54,7 +55,7 @@ export const Hotels: React.FC = () => {
           Discover Handpicked Hotels
         </h1>
         <p className="text-slate-500 text-sm mt-1">
-          Explore curated stays with verified ratings and realistic pricing across top destinations.
+          Browse sample hotel listings and estimated rates. Availability, prices, and reservations are not live.
         </p>
 
         {/* Filter Bar */}
@@ -130,6 +131,17 @@ export const Hotels: React.FC = () => {
                     <MapPin className="w-3.5 h-3.5 text-teal-600" />
                     {h.address || 'Central location'}
                   </p>
+                  <a
+                    href={`https://www.openstreetmap.org/search?query=${encodeURIComponent(
+                      [h.name, h.address].filter(Boolean).join(', ')
+                    )}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 mt-2 text-xs font-semibold text-teal-700 hover:text-teal-900"
+                  >
+                    <MapPin className="w-3.5 h-3.5" />
+                    Find on map
+                  </a>
 
                   {h.amenities && (
                     <div className="flex flex-wrap gap-1.5 mt-3">

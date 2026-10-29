@@ -52,8 +52,28 @@ export interface Flight {
   arrive_time: string
   duration_min: number
   price: number
-  seat_class: string
+  flight_class: string
   seats_available: number
+}
+
+export interface LocalTransportOption {
+  mode: string
+  description: string
+  estimated_fare: number
+  estimated_minutes: number
+  currency: string
+  is_mock: boolean
+}
+
+export interface PlaceLookup {
+  name: string
+  latitude: number | null
+  longitude: number | null
+  location_source: string | null
+  photo_url: string | null
+  photo_page_url: string | null
+  photo_artist: string | null
+  photo_license: string | null
 }
 
 // ── Itinerary ─────────────────────────────────────────────────────────────────
@@ -66,6 +86,12 @@ export interface ItineraryItem {
   category: 'Food' | 'Activity' | 'Transport' | 'Accommodation' | 'Shopping'
   estimated_cost: number
   position: number
+  place_name?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  photo_url?: string | null
+  photo_credit?: string | null
+  location_source?: string | null
 }
 
 export interface ItineraryDay {
@@ -75,6 +101,7 @@ export interface ItineraryDay {
   title: string
   summary: string
   items: ItineraryItem[]
+  local_transport?: LocalTransportOption[]
 }
 
 // ── Trips ─────────────────────────────────────────────────────────────────────
@@ -82,6 +109,10 @@ export interface Trip {
   id: number
   user_id: number
   destination_id: number | null
+  destination_name?: string | null
+  latitude?: number | null
+  longitude?: number | null
+  map_location_source?: string | null
   title: string
   start_date: string | null
   days: number

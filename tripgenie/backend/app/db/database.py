@@ -2,7 +2,7 @@
 TripGenie — Database Engine & Session Factory
 Supports both SQLite (for zero-config instant portability) and MySQL 8.0.
 """
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect, text
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
 from app.core.config import settings
@@ -33,6 +33,20 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 class Base(DeclarativeBase):
     """All ORM models inherit from this base class."""
     pass
+
+
+def ensure_trip_destination_name_column() -> None:
+    """Add the destination name to existing trip tables without altering trip data."""
+    inspector = inspect(engine)
+    if "trips" not in inspector.get_table_names():
+        return
+
+    column_names = {column["name"] for column in inspector.get_columns("trips")}
+    if "destination_name" not in column_names:
+        with engine.begin() as connection:
+            connection.execute(
+                text("ALTER TABLE trips ADD COLUMN destination_name VARCHAR(150) NOT NULL DEFAULT ''")
+            )
 
 
 def get_db():

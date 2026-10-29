@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.router import api_router
 from app.core.config import settings
+from app.db.database import ensure_trip_destination_name_column
 
 app = FastAPI(
     title="TripGenie API",
@@ -28,6 +29,11 @@ app.add_middleware(
 
 # ── Mount API router ──────────────────────────────────────────────────────────
 app.include_router(api_router)
+
+
+@app.on_event("startup")
+def ensure_trip_schema() -> None:
+    ensure_trip_destination_name_column()
 
 
 @app.get("/", tags=["Health"])

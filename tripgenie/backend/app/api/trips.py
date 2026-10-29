@@ -26,7 +26,6 @@ from app.ai.prompts import ITINERARY_SYSTEM_PROMPT, REGENERATE_DAY_PROMPT
 router = APIRouter(prefix="/trips", tags=["Trips"])
 logger = logging.getLogger(__name__)
 
-
 def _compute_prompt_hash(payload: dict) -> str:
     serialized = json.dumps(payload, sort_keys=True, default=str)
     return hashlib.sha256(serialized.encode("utf-8")).hexdigest()
@@ -102,6 +101,7 @@ Additional preferences: {req.custom_prompt or 'None'}
     new_trip = Trip(
         user_id=current_user.id,
         destination_id=dest_record.id if dest_record else None,
+        destination_name=req.destination,
         title=itinerary_data.get("title", f"Trip to {req.destination}"),
         start_date=req.start_date or date.today(),
         days=req.days,

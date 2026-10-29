@@ -1,17 +1,23 @@
 """
 TripGenie — Flights Search Router
 """
-from datetime import datetime, date
+from datetime import datetime, date, time, timedelta
 from typing import Optional
 from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.orm import Session
-from sqlalchemy import select, func
+from sqlalchemy import or_, select
 
 from app.db.database import get_db
 from app.models.flight import Flight
 from app.schemas.flight import FlightListResponse, FlightResponse
 
 router = APIRouter(prefix="/flights", tags=["Flights"])
+
+DESTINATION_ROUTE_ALIASES = {
+    "kerala": ("kochi",),
+    "ladakh": ("leh",),
+    "andaman": ("port blair",),
+}
 
 
 @router.get("", response_model=FlightListResponse)
@@ -30,7 +36,16 @@ def search_flights(
     if origin:
         query = query.where(Flight.origin.ilike(f"%{origin}%"))
     if destination:
-        query = query.where(Flight.destination.ilike(f"%{destination}%"))
+        route_names = (destination, *DESTINATION_ROUTE_ALIASES.get(destination.casefold(), ()))
+        query = query.where(
+            or_(*(Flight.destination.ilike(f"%{name}%") for name in route_names))
+        )
+    if depart_date:
+        day_start = datetime.combine(depart_date, time.min)
+        query = query.where(
+            Flight.depart_time >= day_start,
+            Flight.depart_time < day_start + timedelta(days=1),
+        )
     if flight_class:
         query = query.where(Flight.flight_class == flight_class)
     if max_price is not None:
